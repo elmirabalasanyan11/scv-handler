@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+    php:
+        build:
+            context: docker/php
+        volumes:
+            - './app:/var/www/html'
+    nginx:
+        image: nginx:latest
+        ports:
+            - 80:80
+        volumes:
+            - './app:/var/www/html'
+            - './docker/nginx/conf.d:/etc/nginx/conf.d'
+
+    mysql:
+        image: mysql:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            #            MYSQL_DATABASE: '${DB_DATABASE}'
+            #            MYSQL_USER: '${DB_USERNAME}'
+            #            MYSQL_PASSWORD: '${DB_PASSWORD}'
+        ports:
+            - "33060:33060"
+
+        volumes:
+            - './docker/volumes/mysql:/var/lib/mysql'
