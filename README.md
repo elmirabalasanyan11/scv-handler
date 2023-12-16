@@ -33,3 +33,6 @@ This PHP project involves the creation and management of a database, with functi
 
    ```bash
    git clone https://github.com/elmirabalasanyan11/scv-handler
+   
+   docker-compose up
+   localhost/index.php will open the project
